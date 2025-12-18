@@ -1,5 +1,5 @@
 #!/bin/bash
-# setup.sh — copy configs from repo to printer_data/config
+# setup.sh — copy all configs from repo to printer_data/config
 
 set -e
 
@@ -19,10 +19,12 @@ done
 echo "Copying files from $REPO_CONFIG_DIR to $PRINTER_CONFIG_DIR..."
 mkdir -p "$PRINTER_CONFIG_DIR"
 
-# Copy all .cfg and .conf files
-for file in "$REPO_CONFIG_DIR"/*.{cfg,conf}; do
+for file in "$REPO_CONFIG_DIR"/*; do
     [ -e "$file" ] || continue
-    cp -f "$file" "$PRINTER_CONFIG_DIR/"
+    DEST="$PRINTER_CONFIG_DIR/$(basename "$file")"
+    # Remove symlink or existing file if present
+    [ -e "$DEST" ] && rm -f "$DEST"
+    cp -a "$file" "$DEST"
     echo "Copied $(basename "$file")"
 done
 
