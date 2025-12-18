@@ -2,7 +2,7 @@
 
 # Paths
 REPO_CONFIG_DIR="$HOME/klipper-march/config"
-KLIPPER_CONFIG_DIR="$HOME/printer_data/config/printer.cfg"
+KLIPPER_CONFIG_DIR="$HOME/printer_data/config/"
 BACKUP_DIR="$HOME/klipper_config_backup_$(date +%Y%m%d_%H%M%S)"
 
 # Create backup folder
