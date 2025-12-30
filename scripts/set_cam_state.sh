@@ -19,4 +19,4 @@ else
   exit 1
 fi
 
-sudo systemctl restart crowsnest.service
+systemctl restart crowsnest.service
